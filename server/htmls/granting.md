@@ -1,5 +1,3 @@
 Informace o 
 - akreditacích
-- výsledcíh studia
-
-(by)
+- výsledcích studia
