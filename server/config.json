@@ -1,4 +1,58 @@
 {
+    "ug": { 
+        "file": "ug.html",
+        "title": "Uživatelé",
+        "authors": "Hrbolek",
+        "markdownfile": "ug.md"
+    },
+    "events": { 
+        "file": "",
+        "title": "Rozvrh",
+        "authors": "many",
+        "markdownfile": "events.md"
+    },
+    "facilities": { 
+        "file": "",
+        "title": "Učebny",
+        "authors": "many",
+        "markdownfile": "facilities.md"
+    },
+    "granting": { 
+        "file": "",
+        "title": "Akreditace / garance",
+        "authors": "many",
+        "markdownfile": "granting.md"
+    },    
+    "plans": { 
+        "file": "",
+        "title": "Plány studia",
+        "authors": "many",
+        "markdownfile": "plans.md"
+    },    
+    "projects": { 
+        "file": "",
+        "title": "Projekty",
+        "authors": "many",
+        "markdownfile": "projects.md"
+    },    
+    "publications": { 
+        "file": "",
+        "title": "Výsledky",
+        "authors": "many",
+        "markdownfile": "publications.md"
+    },    
+    "exams": { 
+        "file": "",
+        "title": "Zkoušky",
+        "authors": "many",
+        "markdownfile": "zkousky.md"
+    },   
+    "forms": { 
+        "file": "form.html",
+        "title": "DEMO",
+        "authors": ":)",
+        "markdownfile": "form.md"
+    },
     "graphiql": { 
         "file": "graphiql.html",
         "title": "Graphiql",
@@ -28,29 +82,5 @@
         "title": "Uživatelé",
         "authors": "Hrbolek",
         "markdownfile": "users.md"
-    },
-    "ug": { 
-        "file": "ug.html",
-        "title": "Uživatelé",
-        "authors": "Hrbolek",
-        "markdownfile": "ug.md"
-    },
-    "forms": { 
-        "file": "form.html",
-        "title": "DEMO",
-        "authors": ":)",
-        "markdownfile": "form.md"
-    },
-    "exams": { 
-        "file": "",
-        "title": "Zkoušky",
-        "authors": "many",
-        "markdownfile": "zkousky.md"
-    },
-    "events": { 
-        "file": "",
-        "title": "Rozvrh",
-        "authors": "many",
-        "markdownfile": "rozvrh.md"
-    }    
+    }
 }

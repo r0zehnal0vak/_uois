@@ -110,7 +110,7 @@ JWTRESOLVEUSERPATH = os.environ.get("JWTRESOLVEUSERPATH", "http://localhost:8000
 
 
 from prometheus_fastapi_instrumentator import Instrumentator
-Instrumentator().instrument(app).expose(app, endpoint="/metrics")
+Instrumentator().instrument(app, metric_namespace="frontnend").expose(app, endpoint="/metrics")
 
 import json
 

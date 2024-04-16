@@ -32,6 +32,9 @@ services:
     depends_on:
       - postgres_credentials
 
+
+#          {"name": "projects", "url": "http://gql_projects:8000/gql"}
+
   apollo:
     image: hrbolek/apollo_federation
     # image: apollofederation:latest
@@ -46,7 +49,11 @@ services:
           {"name": "forms", "url": "http://gql_forms:8000/gql"},
           {"name": "granting", "url": "http://gql_granting:8000/gql"},
           {"name": "facilities", "url": "http://gql_facilities:8000/gql"},
-          {"name": "events", "url": "http://gql_events:8000/gql"}
+          {"name": "events", "url": "http://gql_events:8000/gql"},
+          {"name": "publications", "url": "http://gql_publications:8000/gql"},
+          {"name": "projects", "url": "http://gql_projects:8000/gql"},
+          {"name": "lessons", "url": "http://gql_lessons:8000/gql"},
+          {"name": "surveys", "url": "http://gql_surveys:8000/gql"}
         ]       
     healthcheck:
       # definice, umoznujici provest test, zda je kontejner v poradku (vsimnete si portu a srovnejte s portem v environment)
@@ -64,6 +71,9 @@ services:
       - gql_events
       - gql_granting
       - gql_facilities
+      - gql_projects
+      - gql_publications
+      - gql_surveys
 
   gql_ug:
     image: hrbolek/gql_ug #   image: kavic/ug
@@ -174,7 +184,115 @@ services:
     depends_on:
       - postgres_gql
 
+  gql_projects:
+    image: hrbolek/gql_projects # frajxd/gql_projects # hrbolek/gql_projects
+    environment:
+      # link na db mimo stack
+      # - POSTGRES_HOST=host.docker.internal:5432
+      - POSTGRES_HOST=postgres_gql:5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=data
+      - GQLUG_ENDPOINT_URL=http://gql_ug:8000/gql
+      - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+      - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+      - DEMO=False
+      - DEMODATA=True
+    healthcheck:
+      # definice, umoznujici provest test, zda je kontejner v poradku
+      test: "curl -f -H 'Content-Type: application/json' -X POST -d '{\"query\":\"query{__schema{types{name}}}\"}' http://localhost:8000/gql || exit 1"
+      interval: 60s
+      retries: 3
+      start_period: 60s
+      timeout: 10s
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    # ports:
+    #   - 33013:8000
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    depends_on:
+      - postgres_gql
 
+  gql_publications:
+    image: hrbolek/gql_publications # kozmycz/gql_publications_a
+    environment:
+      # link na db mimo stack
+      # - POSTGRES_HOST=host.docker.internal:5432
+      - POSTGRES_HOST=postgres_gql:5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=data
+      - GQLUG_ENDPOINT_URL=http://gql_ug:8000/gql
+      - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+      - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+      - DEMO=False
+      - DEMODATA=True
+    healthcheck:
+      # definice, umoznujici provest test, zda je kontejner v poradku
+      test: "curl -f -H 'Content-Type: application/json' -X POST -d '{\"query\":\"query{__schema{types{name}}}\"}' http://localhost:8000/gql || exit 1"
+      interval: 60s
+      retries: 3
+      start_period: 60s
+      timeout: 10s
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    # ports:
+    #   - 33013:8000
+    depends_on:
+      - postgres_gql
+
+  gql_lessons:
+    image: hrbolek/gql_lessons:0.8.5 # onickdock/gql_lessons_dev
+    environment:
+      # link na db mimo stack
+      # - POSTGRES_HOST=host.docker.internal:5432
+      - POSTGRES_HOST=postgres_gql:5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=data
+      - GQLUG_ENDPOINT_URL=http://gql_ug:8000/gql
+      - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+      - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+      - DEMO=False
+      - DEMODATA=True
+    healthcheck:
+      # definice, umoznujici provest test, zda je kontejner v poradku
+      test: "curl -f -H 'Content-Type: application/json' -X POST -d '{\"query\":\"query{__schema{types{name}}}\"}' http://localhost:8000/gql || exit 1"
+      interval: 60s
+      retries: 3
+      start_period: 60s
+      timeout: 10s
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    # ports:
+    #   - 33013:8000
+    depends_on:
+      - postgres_gql
+
+
+  gql_surveys:
+    image: hrbolek/gql_surveys:0.8.5 # onickdock/gql_lessons_dev
+    environment:
+      # link na db mimo stack
+      # - POSTGRES_HOST=host.docker.internal:5432
+      - POSTGRES_HOST=postgres_gql:5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=data
+      - GQLUG_ENDPOINT_URL=http://gql_ug:8000/gql
+      - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+      - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+      - DEMO=False
+      - DEMODATA=True
+    healthcheck:
+      # definice, umoznujici provest test, zda je kontejner v poradku
+      test: "curl -f -H 'Content-Type: application/json' -X POST -d '{\"query\":\"query{__schema{types{name}}}\"}' http://localhost:8000/gql || exit 1"
+      interval: 60s
+      retries: 3
+      start_period: 60s
+      timeout: 10s
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    # ports:
+    #   - 33013:8000
+    depends_on:
+      - postgres_gql
 
   postgres_gql:
     image: postgres
@@ -189,8 +307,8 @@ services:
       timeout: 10s
       retries: 5
     restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
-    # ports:
-    #   - 5432:5432
+    ports:
+      - 5432:5432
 
   postgres_credentials:
     image: postgres

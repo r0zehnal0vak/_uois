@@ -1,1 +1,8 @@
-Základní informace o užovatelích a skupinách
+Informace o
+- uživatelích
+- skupinách
+- členství a rolích
+
+Pracovní stůl.
+
+(by) Hrbolek
