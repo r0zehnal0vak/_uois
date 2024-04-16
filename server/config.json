@@ -6,37 +6,37 @@
         "markdownfile": "ug.md"
     },
     "events": { 
-        "file": "",
+        "file": "events.html",
         "title": "Rozvrh",
         "authors": "many",
         "markdownfile": "events.md"
     },
     "facilities": { 
-        "file": "",
+        "file": "facilities.html",
         "title": "Učebny",
         "authors": "many",
         "markdownfile": "facilities.md"
     },
     "granting": { 
-        "file": "",
+        "file": "granting.html",
         "title": "Akreditace / garance",
         "authors": "many",
         "markdownfile": "granting.md"
     },    
     "plans": { 
-        "file": "",
+        "file": "plans.html",
         "title": "Plány studia",
         "authors": "many",
         "markdownfile": "plans.md"
     },    
     "projects": { 
-        "file": "",
+        "file": "projects.html",
         "title": "Projekty",
         "authors": "many",
         "markdownfile": "projects.md"
     },    
     "publications": { 
-        "file": "",
+        "file": "publications.html",
         "title": "Výsledky",
         "authors": "many",
         "markdownfile": "publications.md"
