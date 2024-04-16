@@ -29,6 +29,12 @@
         "authors": "many",
         "markdownfile": "plans.md"
     },    
+    "surveys": { 
+        "file": "surveys.html",
+        "title": "Studentské hodnocení",
+        "authors": "many",
+        "markdownfile": "surveys.md"
+    },    
     "projects": { 
         "file": "projects.html",
         "title": "Projekty",
