@@ -4,5 +4,3 @@ Informace o
 - členství a rolích
 
 Pracovní stůl.
-
-(by) Hrbolek
