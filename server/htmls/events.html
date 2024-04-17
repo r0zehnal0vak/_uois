@@ -17,7 +17,7 @@
       var process = {env: "development"}
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@hrbolek/uoisfrontend-events/dist/umd/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stepand1/uoisfrontend-event/dist/umd/index.js"></script>
   </head>
   <body>
     <div id="root"></div>
@@ -25,9 +25,9 @@
 
     <script>
       console.log("hi")
-      console.log(Object.keys(UG))
-      const { App } = Events
-      console.log(Object.keys(UG))
+      console.log(Object.keys(EVENTS))
+      const { App } =  EVENTS
+      console.log(Object.keys(EVENTS))
       ReactDOM.createRoot(document.getElementById('root')).render(
         React.createElement(App)
       )      

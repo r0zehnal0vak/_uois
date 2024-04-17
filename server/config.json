@@ -20,19 +20,19 @@
     "granting": { 
         "file": "granting.html",
         "title": "Akreditace / garance",
-        "authors": "many",
+        "authors": "bgee",
         "markdownfile": "granting.md"
     },    
     "plans": { 
         "file": "plans.html",
         "title": "Plány studia",
-        "authors": "many",
+        "authors": "kristl63",
         "markdownfile": "plans.md"
     },    
     "surveys": { 
         "file": "surveys.html",
         "title": "Studentské hodnocení",
-        "authors": "many",
+        "authors": "DT",
         "markdownfile": "surveys.md"
     },    
     "projects": { 
@@ -44,7 +44,7 @@
     "publications": { 
         "file": "publications.html",
         "title": "Výsledky",
-        "authors": "many",
+        "authors": "K4rleak",
         "markdownfile": "publications.md"
     },    
     "exams": { 
