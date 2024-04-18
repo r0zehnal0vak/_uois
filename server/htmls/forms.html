@@ -17,7 +17,7 @@
       var process = {env: "development"}
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@lukaszdrazilek/gql_projects/dist/umd/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@nikdo/uoisfrontend-forms/dist/umd/index.js"></script>
   </head>
   <body>
     <div id="root"></div>
@@ -25,9 +25,9 @@
 
     <script>
       console.log("hi")
-      console.log(Object.keys(PROJECTS))
-      const { App } = PROJECTS
-      console.log(Object.keys(PROJECTS))
+      console.log(Object.keys(FORMS))
+      const { App } = FORMS
+      console.log(Object.keys(FORMS))
       ReactDOM.createRoot(document.getElementById('root')).render(
         React.createElement(App)
       )      

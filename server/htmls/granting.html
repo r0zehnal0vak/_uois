@@ -17,7 +17,7 @@
       var process = {env: "development"}
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@bgee/uoisfrontend-granting/dist/umd/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@white_002/projekt-granting/dist/umd/index.js"></script>
   </head>
   <body>
     <div id="root"></div>
@@ -25,9 +25,9 @@
 
     <script>
       console.log("hi")
-      console.log(Object.keys(Granting))
-      const { App } = Granting
-      console.log(Object.keys(Granting))
+      console.log(Object.keys(Shared))
+      const { App } = Shared
+      console.log(Object.keys(Shared))
       ReactDOM.createRoot(document.getElementById('root')).render(
         React.createElement(App)
       )      

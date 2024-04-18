@@ -8,7 +8,7 @@
     "events": { 
         "file": "events.html",
         "title": "Rozvrh",
-        "authors": "many",
+        "authors": "Bublos",
         "markdownfile": "events.md"
     },
     "facilities": { 
@@ -20,14 +20,14 @@
     "granting": { 
         "file": "granting.html",
         "title": "Akreditace / garance",
-        "authors": "bgee",
+        "authors": "white_002",
         "markdownfile": "granting.md"
     },    
-    "plans": { 
-        "file": "plans.html",
+    "lessons": { 
+        "file": "lessons.html",
         "title": "Plány studia",
         "authors": "kristl63",
-        "markdownfile": "plans.md"
+        "markdownfile": "lessons.md"
     },    
     "surveys": { 
         "file": "surveys.html",
@@ -38,7 +38,7 @@
     "projects": { 
         "file": "projects.html",
         "title": "Projekty",
-        "authors": "many",
+        "authors": "LZ",
         "markdownfile": "projects.md"
     },    
     "publications": { 
@@ -53,11 +53,17 @@
         "authors": "many",
         "markdownfile": "zkousky.md"
     },   
-    "forms": { 
+    "form": { 
         "file": "form.html",
         "title": "DEMO",
         "authors": ":)",
         "markdownfile": "form.md"
+    },
+    "forms": { 
+        "file": "forms.html",
+        "title": "Žádosti",
+        "authors": "nikdo3",
+        "markdownfile": "forms.md"
     },
     "graphiql": { 
         "file": "graphiql.html",
