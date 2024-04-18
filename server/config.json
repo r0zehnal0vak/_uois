@@ -46,18 +46,6 @@
         "title": "Výsledky",
         "authors": "K4rleak",
         "markdownfile": "publications.md"
-    },    
-    "exams": { 
-        "file": "",
-        "title": "Zkoušky",
-        "authors": "many",
-        "markdownfile": "zkousky.md"
-    },   
-    "form": { 
-        "file": "form.html",
-        "title": "DEMO",
-        "authors": ":)",
-        "markdownfile": "form.md"
     },
     "forms": { 
         "file": "forms.html",
@@ -94,5 +82,17 @@
         "title": "Uživatelé",
         "authors": "Hrbolek",
         "markdownfile": "users.md"
+    },    
+    "exams": { 
+        "file": "",
+        "title": "Zkoušky",
+        "authors": "many",
+        "markdownfile": "zkousky.md"
+    },   
+    "form": { 
+        "file": "form.html",
+        "title": "DEMO",
+        "authors": ":)",
+        "markdownfile": "form.md"
     }
 }
