@@ -1,0 +1,28 @@
+groups:
+  - name: ServiceLevelObjectives
+    rules:
+      - record: service_level_objective:class
+        labels: { slo_class: critical }
+        expr: 99
+      - record: service_level_objective:class
+        labels: { slo_class: high-fast }
+        expr: 95
+      - record: service_level_objective:class
+        labels: { slo_class: high-slow }
+        expr: 95
+      - record: service_level_objective:class
+        labels: { slo_class: low }
+        expr: 90
+      - record: service_level_objective:class
+        labels: { slo_class: no-slo }
+        expr: 0
+  - name: SLO_error_ratio
+    rules:
+      - record: job:slo_errors_per_request:ratio_rate5m
+        expr: sum(rate(slo_domain_slo_class_slo_app:slo_events_total{result="fail"}[5m])) by (slo_app, slo_class, slo_domain, slo_type)
+              /
+              sum(rate(slo_domain_slo_class_slo_app:slo_events_total[5m])) by (slo_app, slo_class, slo_domain, slo_type)
+      - record: job:slo_errors_per_request:ratio_rate30m
+        expr: sum(rate(slo_domain_slo_class_slo_app:slo_events_total{result="fail"}[30m])) by (slo_app, slo_class, slo_domain, slo_type)
+              /
+              sum(rate(slo_domain_slo_class_slo_app:slo_events_total[30m])) by (slo_app, slo_class, slo_domain, slo_type)
