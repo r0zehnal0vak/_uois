@@ -1,0 +1,32 @@
+webServerListenAddress: "0.0.0.0:8080"
+# Data processing can be customized by adding modules to the pipeline
+pipeline: ["prometheusIngester", "eventKeyGenerator", "dynamicClassifier", "sloEventProducer", "prometheusExporter"]
+modules:
+  # Fetch the SLO events from prometheus
+  prometheusIngester:
+    apiUrl: "http://prometheus:9090"
+    queryTimeout: 30s
+    queries:
+      # Get data for success/fail rate
+      - query: "request_count_total"
+        type: counter_increase
+        interval: 30s
+        additionalLabels:
+          event_type: request_result
+      # Get data for latency
+      - query: "request_latency_seconds_bucket"
+        type: histogram_increase
+        interval: 30s
+        additionalLabels:
+          event_type: request_latency
+  eventKeyGenerator:
+    metadataKeys:
+      - instance
+  dynamicClassifier:
+    regexpMatchesCsvFiles:
+      - "/exporter-configs/regexp_events_classification.csv"
+  sloEventProducer:
+    rulesFiles:
+      - "/exporter-configs/slo_rules.yaml"
+  prometheusExporter:
+    metricName: "slo_events_total"

@@ -1,0 +1,64 @@
+rules:
+  # Availability (success/fail) rules
+  - metadata_matcher:
+      - key: event_type
+        operator: isEqualTo
+        value: request_result
+    failure_conditions:
+      - key: result
+        operator: isEqualTo
+        value: fail
+    additional_metadata:
+      slo_type: availability
+
+  # Latency rules
+  - slo_matcher:
+      class: high-fast # SLOs should be the same inside of class
+    metadata_matcher:
+      - key: event_type
+        operator: isEqualTo
+        value: request_latency
+    failure_conditions:
+      - operator: numberIsHigherThan
+        key: le
+        value: 0.1
+    additional_metadata:
+      slo_type: latency90
+  - slo_matcher:
+      class: high-fast
+    metadata_matcher:
+      - key: event_type
+        operator: isEqualTo
+        value: request_latency
+    failure_conditions:
+      - operator: numberIsHigherThan
+        key: le
+        value: 0.25
+    additional_metadata:
+      slo_type: latency99
+
+  - slo_matcher:
+      class: high-slow
+    metadata_matcher:
+      - key: event_type
+        operator: isEqualTo
+        value: request_latency
+    failure_conditions:
+      - operator: numberIsHigherThan
+        key: le
+        value: 1.0
+    additional_metadata:
+      slo_type: latency90
+  - slo_matcher:
+      class: high-slow
+    metadata_matcher:
+      - key: event_type
+        operator: isEqualTo
+        value: request_latency
+    failure_conditions:
+      - operator: numberIsHigherThan
+        key: le
+        value: 5.0
+    additional_metadata:
+      slo_type: latency99
+      
