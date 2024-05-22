@@ -96,8 +96,8 @@ services:
       start_period: 60s
       timeout: 10s
     restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
-    # ports:
-    #   - 33012:8000
+    ports:
+      - 33012:8080
     depends_on:
       - postgres_gql
 
@@ -203,8 +203,8 @@ services:
       start_period: 60s
       timeout: 10s
     restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
-    # ports:
-    #   - 33013:8000
+    ports:
+      - 33013:8080
     depends_on:
       - postgres_gql
 
