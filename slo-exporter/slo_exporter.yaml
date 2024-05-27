@@ -7,14 +7,8 @@ modules:
     apiUrl: "http://prometheus:9090"
     queryTimeout: 30s
     queries:
-      # Get data for success/fail rate
-      - query: "request_count_total"
-        type: counter_increase
-        interval: 30s
-        additionalLabels:
-          event_type: request_result
       # Get data for latency
-      - query: "request_latency_seconds_bucket"
+      - query: "apollo_gql_processing_seconds"
         type: histogram_increase
         interval: 30s
         additionalLabels:
