@@ -96,8 +96,8 @@ services:
       start_period: 60s
       timeout: 10s
     restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
-    ports:
-      - 33012:8080
+    # ports:
+    #   - 33012:8000
     depends_on:
       - postgres_gql
 
@@ -203,8 +203,8 @@ services:
       start_period: 60s
       timeout: 10s
     restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
-    ports:
-      - 33013:8080
+    # ports:
+    #   - 33013:8000
     depends_on:
       - postgres_gql
 
@@ -385,14 +385,11 @@ services:
   grafana:
     image: grafana/grafana
     user: '472'
-    restart: always
     environment:
       GF_INSTALL_PLUGINS: 'grafana-clock-panel,grafana-simple-json-datasource'
-    # volumes:
-    #   - grafana_data:/var/lib/grafana
-    #   - ./grafana/provisioning/:/etc/grafana/provisioning/
-    # env_file:
-    #   - ./grafana/config.monitoring
+    volumes:
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning:/etc/grafana/provisioning/
     ports:
       - 8300:3000
     depends_on:
