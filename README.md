@@ -20,3 +20,64 @@ $ curl http://gql_ug:8080/metrics | grep apollo_gql_processing_seconds
 $ curl http://gql_forms:8080/metrics | grep apollo_gql_processing_seconds
 $ curl http://slo_exporter:8080/metrics | grep apollo_gql_processing_seconds
 ```
+
+In GraphiQL you can run these example queries and then curl the metrics to see the results:
+- for gql_ug:
+```
+query MyQuery2 {
+  userPage {
+    __typename
+    name
+    email
+    id
+    surname
+    valid
+    fullname
+    created
+    lastchange
+    memberships {
+      created
+      enddate
+      id
+      lastchange
+      startdate
+      valid
+      group {
+        created
+        email
+        name
+        nameEn
+      }
+      user {
+        name
+        id
+        fullname
+        email
+        valid
+        surname
+      }
+    }
+    answers {
+      aswered
+      created
+      expired
+      lastchange
+      value
+    }
+  }
+}
+```
+- for gql_forms:
+```
+query MyQuery {
+  formPage {
+    created
+    id
+    lastchange
+    name
+    nameEn
+    status
+    valid
+  }
+}
+```
