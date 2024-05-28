@@ -14,7 +14,9 @@ $ docker build . -t hrbolek/gql_forms
 # _uois
 $ docker compose up
 ```
-Curl the metrics:
+Curl the metrics inside gql_ug container:
 ```
-$ curl 127.0.0.1:8080/metrics
+$ curl http://gql_ug:8080/metrics | grep apollo_gql_processing_seconds
+$ curl http://gql_forms:8080/metrics | grep apollo_gql_processing_seconds
+$ curl http://slo_exporter:8080/metrics | grep apollo_gql_processing_seconds
 ```
