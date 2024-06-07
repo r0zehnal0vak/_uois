@@ -8,7 +8,7 @@ modules:
     queryTimeout: 30s
     queries:
       # Get data for latency
-      - query: "apollo_gql_processing_seconds"
+      - query: "apollo_gql_processing_seconds_bucket" 
         type: histogram_increase
         interval: 30s
         additionalLabels:

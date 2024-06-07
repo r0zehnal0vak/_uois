@@ -366,6 +366,7 @@ services:
   prometheus:
     image: prom/prometheus
     restart: always
+    user: root
     volumes:
       - ./prometheus:/etc/prometheus/
       # - prometheus_data:/prometheus
