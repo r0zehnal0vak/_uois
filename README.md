@@ -81,3 +81,35 @@ query MyQuery {
   }
 }
 ```
+
+Query for both gql_ug and gql_forms:
+```
+query MyQuery {
+  formPage {
+    created
+    id
+    lastchange
+    name
+    nameEn
+    valid
+    status
+    rbacobject {
+      roles {
+        group {
+          abbreviation
+          created
+          email
+          lastchange
+          id
+          valid
+          nameEn
+          name
+        }
+        created
+        enddate
+      }
+      id
+    }
+  }
+}
+```
