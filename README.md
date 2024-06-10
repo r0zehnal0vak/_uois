@@ -5,13 +5,13 @@ Setup:
 - gql_forms - [link](https://github.com/r0zehnal0vak/gql_forms/tree/SIEM)
 
 ```
-# gql_ug
+# build gql_ug image
 $ docker build . -t hrbolek/gql_ug
 
-# gql_forms
+#build gql_forms image
 $ docker build . -t hrbolek/gql_forms
 
-# _uois
+# compose _uois
 $ docker compose up
 ```
 Curl the metrics inside gql_ug container:
@@ -113,3 +113,9 @@ query MyQuery {
   }
 }
 ```
+Result after queries:
+- running curl for gql_ug:
+ ![gql_ug](pictures/ug.png)
+
+ - running curl for gql_forms:
+ ![gql_forms](pictures/forms.png)
