@@ -114,7 +114,7 @@ query MyQuery {
 }
 ```
 
-### SIEM our part - documentation
+## SIEM our part - documentation
 This project is based on [link](https://github.com/Joseph-Beppe/_uois/tree/downstream).
 - __Setup for docker-compose.yaml__: We made specific changes to the <code>docker-compose.yaml</code> file to enhance the monitoring setup. These changes involve modifying the configurations for Prometheus and Grafana and adding a new configuration for the SLO Exporter.
 - __Adding scrape targets__: We updated the <code>prometheus.yaml</code> configuration file to include additional targets for scraping metrics. This ensures Prometheus can monitor our specified services.
@@ -126,7 +126,8 @@ This project is based on [link](https://github.com/Joseph-Beppe/_uois/tree/downs
       - targets: ['slo_exporter:8080']
 ...
 ```
-- __Configuration to endpoints__
+ ![prometheus - targets up](pictures/prometheus.png)
+- __Configuration to endpoints__:
   - __Exposing Metrics__: The metrics are exposed at the <code>/metrics</code> endpoint, allowing Prometheus to scrape them for monitoring purposes.
   - __Prometheus Metrics Setup__: The code sets up Prometheus metrics for monitoring purposes. It starts an HTTP server on port 8080 and configures Prometheus instrumentation for FastAPI using the <code>prometheus_fastapi_instrumentator</code> library.
   - __Histogram Definition__: The <code>APOLLO_GQL_HISTOGRAM</code> histogram is defined to measure the time spent processing Apollo GraphQL requests. This histogram provides insights into request processing times.
@@ -142,7 +143,7 @@ This project is based on [link](https://github.com/Joseph-Beppe/_uois/tree/downs
 ...
 ```
 
-#### Overview of functionality
+### Overview of functionality
 Results of metrics after queries:
 - running curl for gql_ug:
  ![gql_ug](pictures/ug.png)
@@ -152,4 +153,6 @@ Results of metrics after queries:
 
 Overview of Grafana dashboards after running queries:
 - Class Overview
+ ![class overview](pictures/class_overview.png)
 - Detail Detail
+ ![gql_forms - service display](pictures/service_display.png)
