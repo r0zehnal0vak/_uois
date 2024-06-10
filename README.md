@@ -154,5 +154,5 @@ Results of metrics after queries:
 Overview of Grafana dashboards after running queries:
 - Class Overview
  ![class overview](pictures/class_overview.png)
-- Detail Detail
+- Service Detail
  ![gql_forms - service display](pictures/service_display.png)
