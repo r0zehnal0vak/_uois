@@ -113,16 +113,11 @@ query MyQuery {
   }
 }
 ```
-Results of metrics after queries:
-- running curl for gql_ug:
- ![gql_ug](pictures/ug.png)
-
- - running curl for gql_forms:
- ![gql_forms](pictures/forms.png)
 
 ### SIEM our part - documentation
+This project is based on [link](https://github.com/Joseph-Beppe/_uois/tree/downstream).
 - __Setup for docker-compose.yaml__: We made specific changes to the <code>docker-compose.yaml</code> file to enhance the monitoring setup. These changes involve modifying the configurations for Prometheus and Grafana and adding a new configuration for the SLO Exporter.
-- __Adding scrape targets__: We updated the prometheus.yaml configuration file to include additional targets for scraping metrics. This ensures Prometheus can monitor our specified services.
+- __Adding scrape targets__: We updated the <code>prometheus.yaml</code> configuration file to include additional targets for scraping metrics. This ensures Prometheus can monitor our specified services.
 ```
 ...
     static_configs:
@@ -131,10 +126,11 @@ Results of metrics after queries:
       - targets: ['slo_exporter:8080']
 ...
 ```
-- __Prometheus Metrics Setup__: The code sets up Prometheus metrics for monitoring purposes. It starts an HTTP server on port 8080 and configures Prometheus instrumentation for FastAPI using the <code>prometheus_fastapi_instrumentator</code> library.
-- __Histogram Definition__: The <code>APOLLO_GQL_HISTOGRAM</code> histogram is defined to measure the time spent processing Apollo GraphQL requests. This histogram provides insights into request processing times.
-- __Decorator Usage__: The <code>@APOLLO_GQL_HISTOGRAM.time()</code> decorator is applied to functions that handle Apollo GraphQL requests. This decorator measures the execution time of these functions and records it in the defined histogram.
-- __Exposing Metrics__: The metrics are exposed at the <code>/metrics</code> endpoint, allowing Prometheus to scrape them for monitoring purposes.
+- __Configuration to endpoints__
+  - __Exposing Metrics__: The metrics are exposed at the <code>/metrics</code> endpoint, allowing Prometheus to scrape them for monitoring purposes.
+  - __Prometheus Metrics Setup__: The code sets up Prometheus metrics for monitoring purposes. It starts an HTTP server on port 8080 and configures Prometheus instrumentation for FastAPI using the <code>prometheus_fastapi_instrumentator</code> library.
+  - __Histogram Definition__: The <code>APOLLO_GQL_HISTOGRAM</code> histogram is defined to measure the time spent processing Apollo GraphQL requests. This histogram provides insights into request processing times.
+  - __Decorator Usage__: The <code>@APOLLO_GQL_HISTOGRAM.time()</code> decorator is applied to functions that handle Apollo GraphQL requests. This decorator measures the execution time of these functions and records it in the defined histogram.
 - __Modifications to slo_exporter.yaml__: We made specific changes to the <code>slo_exporter.yaml</code> configuration file to include a custom query for monitoring the latency of GraphQL requests. By adding the <code>apollo_gql_processing_seconds_bucket</code> query, we enable the SLO Exporter to track and export relevant Service Level Objectives (SLOs) based on this query.
 ```
 ...
@@ -145,3 +141,15 @@ Results of metrics after queries:
           event_type: request_latency
 ...
 ```
+
+#### Overview of functionality
+Results of metrics after queries:
+- running curl for gql_ug:
+ ![gql_ug](pictures/ug.png)
+
+ - running curl for gql_forms:
+ ![gql_forms](pictures/forms.png)
+
+Overview of Grafana dashboards after running queries:
+- Class Overview
+- Detail Detail
