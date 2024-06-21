@@ -156,3 +156,21 @@ Overview of Grafana dashboards after running queries:
  ![class overview](pictures/class_overview.png)
 - Service Detail
  ![gql_forms - service display](pictures/service_display.png)
+
+### Implementing Snort
+Based on config from co-worker project - [link](https://github.com/doucharm/SIEM_Snort.git)
+- Changes made:
+    - Snort is running inside the frontend container.
+    - It is running in the background (added command bellow) and specified logs location:
+    ```
+      CMD snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/rules/local.rules -i lo -D -l /var/log/snort
+    ```
+    - To snort config added specifications for logs saving:
+    ```
+    alert_json =
+    {
+      file = true,
+      limit = 100,
+      fields = 'timestamp class msg priority src_addr src_port dst_addr dst_port',
+    }
+    ```
