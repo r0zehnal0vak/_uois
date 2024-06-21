@@ -174,3 +174,16 @@ Based on config from co-worker project - [link](https://github.com/doucharm/SIEM
       fields = 'timestamp class msg priority src_addr src_port dst_addr dst_port',
     }
     ```
+- Snort proof of functionality:
+```
+# exec into frontend container (run two terminals)
+$ docker ps
+$ docker exec -it <frontend_container_id> bash
+
+# In the fist one run ping
+$ ping localhost
+
+# In the second one cat snort logs
+$ cat /var/log/snort/alert_json.txt
+
+```
